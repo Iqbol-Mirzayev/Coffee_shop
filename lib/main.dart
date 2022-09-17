@@ -18,17 +18,17 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
   MyRoute _myRoute = MyRoute();
 
-  var user = FirebaseAuth.instance;
+  final User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<User?>();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Coffee',
       theme: ThemeComp.myTheme,
-      // initialRoute: "/login",
-      // onGenerateRoute: _myRoute.onGenerateRoute,
-      home: user != null ? LoginPage() : HomePage(),
+      initialRoute: "/login",
+      onGenerateRoute: _myRoute.onGenerateRoute,
+      // home: user != null ? LoginPage() :  HomePage() ,
     );
   }
 }

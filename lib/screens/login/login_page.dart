@@ -5,9 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
-
-import '../../provider/login_provider.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -105,22 +102,22 @@ class LoginPage extends StatelessWidget {
                       ElevatedButton(
                         child: Text("SIGN IN"),
                         onPressed: () async {
-                          await signIn(_emailController.text,
-                                  _passwordController.text)
-                              .then((value) {
-                            if (value) {
-                              return Navigator.pushReplacementNamed(
-                                  context, "/home");
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                    "Username or password is not correct ",
-                                  ),
-                                ),
-                              );
-                            }
-                          });
+                          // await signIn(_emailController.text,
+                          //         _passwordController.text)
+                          //     .then((value) {
+                          //   if (value) {
+                          //     return Navigator.pushReplacementNamed(
+                          //         context, "/home");
+                          //   } else {
+                          //     ScaffoldMessenger.of(context).showSnackBar(
+                          //       const SnackBar(
+                          //         content: Text(
+                          //           "Username or password is not correct ",
+                          //         ),
+                          //       ),
+                          //     );
+                          //   }
+                          // });
                         },
                         style: ElevatedButton.styleFrom(
                             elevation: 0,
@@ -129,13 +126,8 @@ class LoginPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15.0))),
                       ),
 
-
-
-
-
-
                       ElevatedButton(
-                         child:  Text("data"),
+                        child: Text("data"),
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.green),
                         onPressed: () {
@@ -172,7 +164,7 @@ class LoginPage extends StatelessWidget {
     }
   }
 
-  Future signIn(String e, String p) async {
+ Future signIn(String e, String p) async {
     if (_authUser.currentUser == null) {
       try {
         UserCredential? _signedUser =
@@ -187,6 +179,7 @@ class LoginPage extends StatelessWidget {
       }
     }
   }
+
 
   Future resetPassword() async {
     String email = "iqbolmirzayev2000@gmail.com";

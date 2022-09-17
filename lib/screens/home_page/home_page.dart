@@ -15,9 +15,9 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("${user.currentUser!.email}"),
         actions: [
-          IconButton(
-            onPressed: () {
-              user.signOut().then((value) {
+          IconButton( 
+            onPressed: ()async {
+              await user.signOut().then((value) {
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (_) => LoginPage()),
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Text("Verified ${user.currentUser!.emailVerified}"),
+        child: Text("Verified ${user.currentUser!.uid}"),
       ),
     );
   }
